@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const Input = ( { onHandleText, onHandleSubmit, text }) => {
 
@@ -10,7 +10,6 @@ const Input = ( { onHandleText, onHandleSubmit, text }) => {
                 onChange={onHandleText}
                 value={text}
                 />
-                
                 <input
                 type="submit"
                 value="search" />

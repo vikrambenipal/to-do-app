@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Input from './components/Input';
 import List from './components/List';
+import { v4 as uuidv4 } from 'uuid';
 
 // dummy data
 const itemList = [
@@ -27,10 +28,14 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newList = list.concat({ task: text, id: 3 });
-    setList(newList);
-
-    setText('');
+    if(text === ''){
+      alert('please enter something!');
+      setList(list);
+    }else{
+      const newList = list.concat({ task: text, id: uuidv4() });
+      setList(newList);
+      setText('');
+    }
   }
 
   return (
@@ -38,7 +43,6 @@ const App = () => {
       <h1>to do list</h1>
       <Input onHandleText={handleText} onHandleSubmit={handleSubmit} text={text}/>
       <List list={list}/>
-      {console.log(list)}
     </div>
   );
 }
