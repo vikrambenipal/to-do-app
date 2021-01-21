@@ -1,23 +1,20 @@
 import React, { useState } from 'react'
 
-const Input = ( { onHandle }) => {
-
-    const [text, setText] = useState('');
-
-    const onChange = (e) => {
-        setText(e.target.value);
-    }
+const Input = ( { onHandleText, onHandleSubmit, text }) => {
 
     return (
         <div>
-            <form onSubmit={onHandle}>
+            <form onSubmit={onHandleSubmit}>
                 <input type="text" name="text" 
                 placeholder="Enter Task..." 
+                onChange={onHandleText}
                 value={text}
-                onChange={onChange}/>
-                <input type="submit" />
+                />
+                
+                <input
+                type="submit"
+                value="search" />
             </form>
-            {console.log(text)}
         </div>
         
     )
